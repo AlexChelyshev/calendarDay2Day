@@ -1,0 +1,46 @@
+
+body {
+    font-family: Comic Sans MS, serif ;
+    color: #2b1d3e;
+}
+.left-side{
+    min-height: 100%;
+    background: url("../images/leftBG.webp") top/100%;
+}
+.right-side{
+    min-height: 100%;
+    background-color: #ee756d;
+}
+.day-card{
+    margin:  20px auto;
+}
+.day-card-overlay{
+    background: url("../images/day-card-BG.webp")center/140% no-repeat;
+    height: 110px;
+    border-radius: 20px;
+    margin: auto;
+
+}
+.carousel-control-prev-icon{
+    font-size: 60px;
+    line-height: 20px;
+    color: #2b1d3e;
+
+}
+.carousel-control-next-icon{
+    font-size: 60px;
+    line-height: 20px;
+    top: 30px;
+    color: #2b1d3e;
+}
+.currentDay{
+    -webkit-box-shadow: 0px 0px 15px 9px rgba(90,245,132,0.51);
+    -moz-box-shadow: 0px 0px 15px 9px rgba(90,245,132,0.51);
+    box-shadow: 0px 0px 15px 9px rgba(90,245,132,0.51);
+}
+.parse{
+    margin-top: 50px;
+    border-radius: 20px;
+    background-color: #eae2cb;
+    padding:20px 60px;
+}

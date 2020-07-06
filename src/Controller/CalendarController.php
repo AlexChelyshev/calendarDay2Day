@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Day;
 use App\Entity\Month;
+use App\Service\simple_html_dom;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,12 +19,14 @@ class CalendarController extends AbstractController
         $number = cal_days_in_month(CAL_GREGORIAN, date("n"), date("Y"));
         $monthList = $this->createCalendar();
         $day = date("D", strtotime("06/07/2020"));
+        $parsedInfo = $this->parseInfoAboutDay();
         return $this->render('calendar/index.html.twig', [
             'controller_name' => 'CalendarController',
             'month' => $month,
             'countOfDays' => $number,
             'monthList' => $monthList,
             'day' => $day,
+            'infoAboutDay' => $parsedInfo,
         ]);
     }
     protected function createCalendar(){
@@ -67,6 +70,26 @@ class CalendarController extends AbstractController
             }
         }
         return $month;
+    }
+    protected function parseInfoAboutDay(){
+
+        $html = new simple_html_dom();
+
+        $html->load_file( "http://www.calendarium.com.ua/" );
+
+        $element = $html->find( "h1" );
+        $finalHTML = $element[0];
+        $element = $html->find( "h2" );
+        $finalHTML .= $element[0];
+        $element = $html->find( ".day-inner h3 a" );
+
+        $html->load_file( "http://www.calendarium.com.ua/".$element[0]->href );
+        $element = $html->find( "h2" );
+        $finalHTML .=  $element[0];
+        $element = $html->find( "span" );
+        $finalHTML .=  $element[0];
+
+        return $finalHTML;
     }
 
 }
