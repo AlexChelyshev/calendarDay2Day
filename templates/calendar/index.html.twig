@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CalendarController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Now {{ month }}! ✅</h1>
+    <h1>This month have {{ countOfDays }} days! ✅</h1>
+    <h1>Today {{ day }}! ✅</h1>
+    <h1>MonthList</h1>
+    {% for month in monthList %}
+        <h2>{{ month.getName }} |{{ month.getIsCurrent }}</h2>
+        {% for day in month.getCountOfDays %}
+            <h3>{{ day.getNumber }} | {{ day.getName }} | {{ day.getIsCurrent }}</h3>
+        {% endfor %}
+    {% endfor %}
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/enotr/OpenServer/domains/calendarDay2Day/src/Controller/CalendarController.php'|file_link(0) }}">src/Controller/CalendarController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/enotr/OpenServer/domains/calendarDay2Day/templates/calendar/index.html.twig'|file_link(0) }}">templates/calendar/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
