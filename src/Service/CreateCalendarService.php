@@ -36,12 +36,12 @@ class CreateCalendarService
                 if($h !=  date("j") || $i !=  date("n")){
                     $days[$h] = new Day(
                         $h,
-                        date("D", strtotime(date("m")."/$h/".$i)),
+                        date("D", strtotime($i."/$h/".date("Y"))),
                         false);
                 }else{
                     $days[$h] = new Day(
                         $h,
-                        date("D", strtotime(date("m")."/$h/".date("Y"))),
+                        date("D", strtotime($i."/$h/".date("Y"))),
                         true);
                 }
 
